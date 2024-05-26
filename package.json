@@ -10,9 +10,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "lint:style": "stylelint '**/*.{css,scss,sass}'",
+    "lint:style:fix": "stylelint --fix '**/*.{css,scss,sass}'"
   },
   "prettier": {
+    "printWidth": 80,
     "trailingComma": "all",
     "tabWidth": 2,
     "semi": true
@@ -21,7 +24,8 @@
     "next": "14.2.3",
     "react": "^18",
     "react-dom": "^18",
-    "react-hook-form": "^7.51.4"
+    "react-hook-form": "^7.51.4",
+    "stylelint-config-recommended-scss": "^14.0.0"
   },
   "devDependencies": {
     "@types/node": "^20",
@@ -31,6 +35,8 @@
     "eslint-config-next": "14.2.3",
     "eslint-config-prettier": "^9.1.0",
     "sass": "^1.77.1",
+    "stylelint": "^16.5.0",
+    "stylelint-config-recess-order": "^5.0.1",
     "typescript": "^5"
   }
 }
