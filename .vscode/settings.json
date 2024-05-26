@@ -5,6 +5,9 @@
     "source.fixAll.eslint": "explicit",
     "source.fixAll.stylelint": "explicit"
   },
+  "scss.lint.emptyRules": "ignore",
   "stylelint.validate": ["css", "scss", "tsx", "postcss"],
+  "scss.validate": false,
+  "css.validate": false,
   "cSpell.userWords": []
 }
