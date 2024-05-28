@@ -11,6 +11,11 @@ export default function Header({}: HeaderProps) {
         width={256}
         height={114}
       />
+
+      <div className={styles.linkWrapper}>
+        <a href="/en">English</a>
+        <a href="/ja">にほんご</a>
+      </div>
     </header>
   );
 }
