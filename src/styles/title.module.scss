@@ -1,0 +1,9 @@
+@import "variables";
+
+.title {
+  color: $font-dark;
+
+  @media (prefers-color-scheme: dark) {
+    color: $font-light;
+  }
+}
