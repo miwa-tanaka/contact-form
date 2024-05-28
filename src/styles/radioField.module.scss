@@ -1,0 +1,22 @@
+@import "variables";
+
+.radioWrapper {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+
+  .radioValue {
+    margin-left: 0.5rem;
+  }
+
+  .radioLabel {
+    display: inline-flex;
+    align-items: center;
+    color: $font-dark;
+    cursor: pointer;
+
+    @media (prefers-color-scheme: dark) {
+      color: $font-light;
+    }
+  }
+}

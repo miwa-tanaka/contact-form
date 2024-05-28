@@ -1,8 +1,7 @@
 @import "variables";
 
-.footer {
+.title {
   color: $font-dark;
-  text-align: center;
 
   @media (prefers-color-scheme: dark) {
     color: $font-light;

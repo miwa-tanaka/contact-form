@@ -1,0 +1,12 @@
+@import "variables";
+
+.main {
+  width: 100%;
+  max-width: 95vw;
+  padding-top: 3rem;
+  margin: 0 auto;
+
+  @media (min-width: 80em) {
+    max-width: 1024px;
+  }
+}
