@@ -8,6 +8,11 @@ export default function Header({}: HeaderProps) {
   const router = useRouter();
   const basePath = router.basePath;
 
+  const changeLanguage = (lng: string) => {
+    i18n.changeLanguage(lng);
+    localStorage.setItem("preferredLanguage", lng);
+  };
+
   return (
     <header className={styles.header}>
       <img
@@ -18,8 +23,8 @@ export default function Header({}: HeaderProps) {
       />
 
       <div className={styles.linkWrapper}>
-        <button onClick={() => i18n.changeLanguage("en")}>English</button>
-        <button onClick={() => i18n.changeLanguage("ja")}>にほんご</button>
+        <button onClick={() => changeLanguage("en")}>English</button>
+        <button onClick={() => changeLanguage("ja")}>にほんご</button>
       </div>
     </header>
   );
