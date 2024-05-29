@@ -1,6 +1,6 @@
 import { UseFormRegisterReturn } from "react-hook-form";
 import styles from "@/styles/textField.module.scss";
-import { useLocale } from "@/services/hook/useLocale";
+import { useTranslation } from "react-i18next";
 
 type textFieldProps = {
   type?: string;
@@ -37,7 +37,7 @@ export default function TextField({
   register,
   errors,
 }: textFieldProps) {
-  const trans = useLocale();
+  const { t } = useTranslation("Common");
 
   const errorMessage: string | undefined =
     errors && errors[textFieldName]?.message;
@@ -49,9 +49,7 @@ export default function TextField({
       <label htmlFor={textFieldId} className="label">
         {label}
         {rule && <span className="rule">({rule})</span>}
-        {isRequired && (
-          <span className="required">{`* ${trans.REQUIRED}`}</span>
-        )}
+        {isRequired && <span className="required">{`* ${t("REQUIRED")}`}</span>}
       </label>
 
       <input

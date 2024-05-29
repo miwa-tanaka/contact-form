@@ -1,5 +1,5 @@
 import styles from "@/styles/radioField.module.scss";
-import { useLocale } from "@/services/hook/useLocale";
+import { useTranslation } from "react-i18next";
 
 export type RadioItem = {
   value: string;
@@ -27,7 +27,7 @@ export default function RadioField({
   onChange,
   isRequired,
 }: RadioProps) {
-  const trans = useLocale();
+  const { t } = useTranslation("Common");
 
   const errorMessage: string | undefined =
     errors && errors[radioFieldName]?.message;
@@ -38,9 +38,7 @@ export default function RadioField({
     <>
       <legend className="label">
         {label}
-        {isRequired && (
-          <span className="required">{`* ${trans.REQUIRED}`}</span>
-        )}
+        {isRequired && <span className="required">{`* ${t("REQUIRED")}`}</span>}
       </legend>
       <div
         role="radiogroup"

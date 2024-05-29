@@ -1,4 +1,5 @@
 import styles from "@/styles/header.module.scss";
+import i18n from "i18next";
 
 type HeaderProps = {};
 
@@ -13,8 +14,8 @@ export default function Header({}: HeaderProps) {
       />
 
       <div className={styles.linkWrapper}>
-        <a href="/en">English</a>
-        <a href="/ja">にほんご</a>
+        <button onClick={() => i18n.changeLanguage("en")}>English</button>
+        <button onClick={() => i18n.changeLanguage("ja")}>にほんご</button>
       </div>
     </header>
   );

@@ -1,8 +1,11 @@
+import { useEffect } from "react";
 import type { AppProps } from "next/app";
 import Head from "next/head";
+import { useTranslation } from "react-i18next";
 import { RecoilRoot } from "recoil";
 import { Poppins } from "next/font/google";
 import "../styles/globals.scss";
+import "../../i18n";
 
 const poppins = Poppins({
   weight: ["400", "500", "700"],
@@ -12,6 +15,12 @@ const poppins = Poppins({
 });
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const { i18n } = useTranslation();
+
+  useEffect(() => {
+    document.documentElement.lang = i18n.language;
+  }, [i18n.language]);
+
   return (
     <RecoilRoot>
       <div className={poppins.className}>

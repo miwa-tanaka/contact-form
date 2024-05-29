@@ -1,15 +1,15 @@
 import Title from "@/components/atoms/title";
 import Form from "../organisms/form";
-import { useLocale } from "@/services/hook/useLocale";
+import { useTranslation } from "react-i18next";
 
 type FormTopProps = {};
 
 export default function FormTop({}: FormTopProps) {
-  const trans = useLocale();
+  const { t } = useTranslation("Common");
 
   return (
     <>
-      <Title value={trans.CONTACT_FORM} />
+      <Title value={t("CONTACT_FORM")} />
       <Form />
     </>
   );

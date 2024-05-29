@@ -30,8 +30,12 @@
       gap: 2.5rem;
     }
 
-    a {
+    button {
+      font-size: 1rem;
       color: $font-dark;
+      cursor: pointer;
+      background-color: initial;
+      border: none;
 
       @media (prefers-color-scheme: dark) {
         color: $font-light;
