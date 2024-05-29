@@ -4,7 +4,7 @@ import Title from "@/components/atoms/title";
 import { contactFormCheckFlagState } from "@/services/store";
 import styles from "@/styles/button.module.scss";
 import ArrowIcon from "@/components/atoms/arrowIcon";
-import { useLocale } from "@/services/hook/useLocale";
+import { useTranslation } from "react-i18next";
 
 type ThanksTopProps = {};
 
@@ -15,15 +15,15 @@ export default function ThanksTop({}: ThanksTopProps) {
     setIsValid(false);
   };
 
-  const trans = useLocale();
+  const { t } = useTranslation("Common");
 
   return (
     <>
-      <Title value={trans.CONFIRMATION_MSG} />
+      <Title value={t("CONFIRMATION_MSG")} />
       <div style={containerStyle}>
         <Link href="/" passHref legacyBehavior>
           <a onClick={handleClick} className={styles.button}>
-            {trans.BACK_TO_TOP}
+            {t("BACK_TO_TOP")}
             <ArrowIcon fillColor="#fff" />
           </a>
         </Link>

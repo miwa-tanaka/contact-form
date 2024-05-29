@@ -6,16 +6,17 @@ import ThanksTop from "@/components/templates/thanks";
 import Footer from "@/components/organisms/footer";
 import styles from "@/styles/body.module.scss";
 import { contactFormCheckFlagState } from "@/services/store";
-import { useLocale } from "@/services/hook/useLocale";
+import { useTranslation } from "react-i18next";
 
 export default function Home() {
-  const trans = useLocale();
   const isValid = useRecoilValue(contactFormCheckFlagState);
+
+  const { t } = useTranslation("Common");
 
   return (
     <>
       <Head>
-        <title>{trans.CONTACT_FORM} | HELLO WORLD</title>
+        <title>{t("CONTACT_FORM")} | HELLO WORLD</title>
       </Head>
       <Header />
       <main className={styles.main}>

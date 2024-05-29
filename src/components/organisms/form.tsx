@@ -7,7 +7,7 @@ import Button from "@/components/atoms/button";
 import styles from "@/styles/form.module.scss";
 import type { RadioItem } from "@/components/molecules/inputFields/radioField";
 import { contactFormCheckFlagState } from "@/services/store";
-import { useLocale, useCurrentLocale } from "@/services/hook/useLocale";
+import { useTranslation } from "react-i18next";
 
 type FormProps = {};
 
@@ -36,12 +36,12 @@ export default function Form({}: FormProps) {
     setIsValid(hasData);
   };
 
-  const trans = useLocale();
-  const currentLocale = useCurrentLocale();
+  const { t, i18n } = useTranslation("Common");
+  const currentLanguage = i18n.language;
 
   const preferredContactData: RadioItem[] = [
-    { value: trans.EMAIL, id: "Email" },
-    { value: trans.TEL, id: "Tel" },
+    { value: t("EMAIL"), id: "Email" },
+    { value: t("TEL"), id: "Tel" },
   ];
 
   const hasError = Object.keys(errors).length > 0;
@@ -50,22 +50,22 @@ export default function Form({}: FormProps) {
     <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
       <fieldset>
         <TextField
-          label={trans.NAME}
+          label={t("NAME")}
           isRequired={true}
           textFieldName="name"
           textFieldId="name"
           autocomplete="name"
           register={register("name", {
-            required: trans.ERROR_MSG_NAME,
+            required: t("ERROR_MSG_NAME"),
             maxLength: {
               value: 50,
-              message: trans.ERROR_MSG_NAME_MAX_LENGTH,
+              message: t("ERROR_MSG_NAME_MAX_LENGTH"),
             },
           })}
           errors={errors}
         />
       </fieldset>
-      {currentLocale === "ja" && (
+      {currentLanguage === "ja" && (
         <fieldset>
           <TextField
             label="お名前（ふりがな）"
@@ -87,18 +87,18 @@ export default function Form({}: FormProps) {
       <fieldset>
         <TextField
           type="email"
-          label={trans.EMAIL_ADDRESS}
+          label={t("EMAIL_ADDRESS")}
           isRequired={true}
           textFieldName="email"
           textFieldId="email"
           autocomplete="email"
           inputMode="email"
           register={register("email", {
-            required: trans.ERROR_MSG_EMAIL,
+            required: t("ERROR_MSG_EMAIL"),
             pattern: {
               value:
                 /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]{1,}\.[A-Za-z0-9]{1,}$/,
-              message: trans.ERROR_MSG_EMAIL_FORMAT,
+              message: t("ERROR_MSG_EMAIL_FORMAT"),
             },
           })}
           errors={errors}
@@ -107,17 +107,17 @@ export default function Form({}: FormProps) {
       <fieldset>
         <TextField
           type="tel"
-          label={trans.PHONE_NUMBER}
+          label={t("PHONE_NUMBER")}
           isRequired={true}
           textFieldName="tel"
           textFieldId="tel"
           autocomplete="tel"
           inputMode="tel"
           register={register("tel", {
-            required: trans.ERROR_MSG_PHONE,
+            required: t("ERROR_MSG_PHONE"),
             pattern: {
               value: /^[０-９0-9\-]+$/,
-              message: trans.ERROR_MSG_PHONE_FORMAT,
+              message: t("ERROR_MSG_PHONE_FORMAT"),
             },
           })}
           errors={errors}
@@ -128,11 +128,11 @@ export default function Form({}: FormProps) {
           name="contact_method"
           control={control}
           rules={{
-            required: trans.ERROR_MSG_PICK,
+            required: t("ERROR_MSG_PICK"),
           }}
           render={({ field: { onChange } }) => (
             <RadioField
-              label={trans.PREFERRED_CONTACT_METHOD}
+              label={t("PREFERRED_CONTACT_METHOD")}
               data={preferredContactData}
               radioFieldName="contact_method"
               radioFieldId="contact_method"
@@ -143,8 +143,8 @@ export default function Form({}: FormProps) {
           )}
         />
       </fieldset>
-      {hasError && <p className={styles.errorMessage}>{trans.ERROR_MSG}</p>}
-      <Button text={trans.SUBMIT} type="submit" disabled={isDisabled} />
+      {hasError && <p className={styles.errorMessage}>{t("ERROR_MSG")}</p>}
+      <Button text={t("SUBMIT")} type="submit" disabled={isDisabled} />
     </form>
   );
 }
