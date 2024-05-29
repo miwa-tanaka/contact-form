@@ -1,13 +1,17 @@
+import { useRouter } from "next/router";
 import styles from "@/styles/header.module.scss";
 import i18n from "i18next";
 
 type HeaderProps = {};
 
 export default function Header({}: HeaderProps) {
+  const router = useRouter();
+  const basePath = router.basePath;
+
   return (
     <header className={styles.header}>
       <img
-        src="/title-logo.png"
+        src={`${basePath}/title-logo.png`}
         alt="Logo: HELLO WORLD"
         width={256}
         height={114}
