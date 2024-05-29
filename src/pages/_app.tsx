@@ -18,6 +18,13 @@ function MyApp({ Component, pageProps }: AppProps) {
   const { i18n } = useTranslation();
 
   useEffect(() => {
+    const savedLanguage = localStorage.getItem("preferredLanguage");
+    if (savedLanguage) {
+      i18n.changeLanguage(savedLanguage);
+    }
+  }, [i18n]);
+
+  useEffect(() => {
     document.documentElement.lang = i18n.language;
   }, [i18n.language]);
 
