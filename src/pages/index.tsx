@@ -8,7 +8,7 @@ import styles from "@/styles/body.module.scss";
 import { contactFormCheckFlagState } from "@/services/store";
 import { useTranslation } from "react-i18next";
 
-export default function Home() {
+export default function Home(): JSX.Element {
   const isValid = useRecoilValue(contactFormCheckFlagState);
 
   const { t } = useTranslation("Common");

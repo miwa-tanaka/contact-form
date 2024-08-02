@@ -14,7 +14,7 @@ const poppins = Poppins({
   display: "swap",
 });
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   const { i18n } = useTranslation();
 
   useEffect(() => {

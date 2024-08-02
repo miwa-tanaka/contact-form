@@ -4,7 +4,7 @@ import i18n from "i18next";
 
 type HeaderProps = {};
 
-export default function Header({}: HeaderProps) {
+export default function Header({}: HeaderProps): JSX.Element {
   const router = useRouter();
   const basePath = router.basePath;
 

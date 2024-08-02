@@ -36,7 +36,7 @@ export default function TextField({
   inputMode = "text",
   register,
   errors,
-}: textFieldProps) {
+}: textFieldProps): JSX.Element {
   const { t } = useTranslation("Common");
 
   const errorMessage: string | undefined =

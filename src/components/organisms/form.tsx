@@ -19,7 +19,7 @@ export type FormInputs = {
   contact_method: "email" | "tel";
 };
 
-export default function Form({}: FormProps) {
+export default function Form({}: FormProps): JSX.Element {
   const {
     register,
     handleSubmit,
