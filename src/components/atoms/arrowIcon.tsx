@@ -2,7 +2,7 @@ type ArrowIconProps = {
   fillColor?: string;
 };
 
-export default function ArrowIcon({ fillColor }: ArrowIconProps) {
+export default function ArrowIcon({ fillColor }: ArrowIconProps): JSX.Element {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

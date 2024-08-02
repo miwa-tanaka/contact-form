@@ -4,6 +4,6 @@ type TitleProps = {
   value: string;
 };
 
-export default function Title({ value }: TitleProps) {
+export default function Title({ value }: TitleProps): JSX.Element {
   return <h1 className={style.title}>{value}</h1>;
 }

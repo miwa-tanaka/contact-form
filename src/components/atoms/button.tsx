@@ -7,7 +7,11 @@ type ButtonProps = {
   type?: "submit" | "reset";
 };
 
-export default function Button({ text, disabled, type }: ButtonProps) {
+export default function Button({
+  text,
+  disabled,
+  type,
+}: ButtonProps): JSX.Element {
   return (
     <button
       type={type ? type : "button"}

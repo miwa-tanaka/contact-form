@@ -26,7 +26,7 @@ export default function RadioField({
   errors,
   onChange,
   isRequired,
-}: RadioProps) {
+}: RadioProps): JSX.Element {
   const { t } = useTranslation("Common");
 
   const errorMessage: string | undefined =

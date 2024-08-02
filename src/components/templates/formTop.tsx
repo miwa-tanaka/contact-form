@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 
 type FormTopProps = {};
 
-export default function FormTop({}: FormTopProps) {
+export default function FormTop({}: FormTopProps): JSX.Element {
   const { t } = useTranslation("Common");
 
   return (

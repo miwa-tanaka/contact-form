@@ -8,7 +8,7 @@ import { useTranslation } from "react-i18next";
 
 type ThanksTopProps = {};
 
-export default function ThanksTop({}: ThanksTopProps) {
+export default function ThanksTop({}: ThanksTopProps): JSX.Element {
   const [isValid, setIsValid] = useRecoilState(contactFormCheckFlagState);
 
   const handleClick = () => {
