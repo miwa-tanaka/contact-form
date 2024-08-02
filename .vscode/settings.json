@@ -9,5 +9,11 @@
   "stylelint.validate": ["css", "scss", "tsx", "postcss"],
   "scss.validate": false,
   "css.validate": false,
-  "cSpell.userWords": ["HANKAKU", "languagedetector"]
+  "cSpell.userWords": [
+    "HANKAKU",
+    "languagedetector",
+    "Miwa",
+    "Tanaka",
+    "msapplication"
+  ]
 }
