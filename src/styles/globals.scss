@@ -26,6 +26,7 @@ a {
   gap: 0.75rem;
   align-items: center;
   margin-bottom: 0.5rem;
+  font-size: 1.25rem;
   color: $font-dark;
 
   @media (prefers-color-scheme: dark) {
@@ -38,7 +39,7 @@ a {
 }
 
 .required {
-  font-size: 0.85rem;
+  font-size: 1rem;
   font-weight: 700;
   color: $red;
 
