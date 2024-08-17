@@ -1,3 +1,4 @@
+import { useState, ChangeEvent } from "react";
 import styles from "@/styles/radioField.module.scss";
 import { useTranslation } from "react-i18next";
 
@@ -14,7 +15,7 @@ type RadioProps = {
   errors?: {
     [key: string]: any;
   };
-  onChange: (event: any) => void;
+  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
   isRequired: boolean;
 };
 
@@ -27,12 +28,20 @@ export default function RadioField({
   onChange,
   isRequired,
 }: RadioProps): JSX.Element {
+  const [selectedValue, setSelectedValue] = useState<string | null>(null);
+
   const { t } = useTranslation("Common");
 
   const errorMessage: string | undefined =
     errors && errors[radioFieldName]?.message;
 
   const hasError: boolean = errorMessage ? true : false;
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    setSelectedValue(value);
+    if (onChange) onChange(e);
+  };
 
   return (
     <>
@@ -42,6 +51,7 @@ export default function RadioField({
       </legend>
       <div
         role="radiogroup"
+        aria-required={isRequired}
         aria-invalid={hasError}
         className={styles.radioWrapper}
         aria-labelledby={`${radioFieldId}-legend`}
@@ -49,15 +59,17 @@ export default function RadioField({
       >
         {data.map((v, k) => {
           const radioId = `${radioFieldId}-${v.id}`;
+          const isChecked = selectedValue === v.value;
 
           return (
-            <label key={k} className={styles.radioLabel}>
+            <label key={k} className={styles.radioLabel} htmlFor={radioId}>
               <input
                 type="radio"
                 id={radioId}
                 name={radioFieldName}
                 value={v.value}
-                onChange={onChange}
+                onChange={handleChange}
+                aria-checked={isChecked}
               />
               <span className={styles.radioValue}>{v.value}</span>
             </label>
