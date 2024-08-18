@@ -46,7 +46,7 @@ export default function TextField({
 
   return (
     <>
-      <label htmlFor={textFieldId} className="label">
+      <label id={textFieldId} htmlFor={textFieldId} className="label">
         {label}
         {rule && <span className="rule">({rule})</span>}
         {isRequired && <span className="required">{`* ${t("REQUIRED")}`}</span>}
@@ -61,11 +61,17 @@ export default function TextField({
         inputMode={inputMode}
         required={isRequired}
         aria-invalid={hasError}
+        aria-labelledby={textFieldId}
         aria-describedby={`${textFieldId}-error`}
         {...register}
       />
       {errorMessage ? (
-        <p id={`${textFieldId}-error`} role="alert" className="error">
+        <p
+          id={`${textFieldId}-error`}
+          role="alert"
+          aria-live="polite"
+          className="error"
+        >
           {errorMessage}
         </p>
       ) : null}
