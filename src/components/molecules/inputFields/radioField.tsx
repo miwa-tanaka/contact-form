@@ -45,7 +45,7 @@ export default function RadioField({
 
   return (
     <>
-      <legend className="label">
+      <legend id={radioFieldId} className="label">
         {label}
         {isRequired && <span className="required">{`* ${t("REQUIRED")}`}</span>}
       </legend>
@@ -54,7 +54,7 @@ export default function RadioField({
         aria-required={isRequired}
         aria-invalid={hasError}
         className={styles.radioWrapper}
-        aria-labelledby={`${radioFieldId}-legend`}
+        aria-labelledby={radioFieldId}
         aria-describedby={hasError ? `${radioFieldId}-error` : undefined}
       >
         {data.map((v, k) => {
@@ -77,7 +77,12 @@ export default function RadioField({
         })}
       </div>
       {hasError ? (
-        <p id={`${radioFieldId}-error`} role="alert" className="error">
+        <p
+          id={`${radioFieldId}-error`}
+          role="alert"
+          aria-live="polite"
+          className="error"
+        >
           {errorMessage}
         </p>
       ) : null}
