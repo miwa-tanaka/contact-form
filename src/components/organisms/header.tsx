@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import styles from "@/styles/header.module.scss";
 import i18n from "i18next";
@@ -22,12 +23,14 @@ export default function Header({}: HeaderProps): JSX.Element {
 
   return (
     <header className={styles.header}>
-      <img
-        src={`${basePath}/title-logo.png`}
-        alt="Logo: HELLO WORLD"
-        width={256}
-        height={114}
-      />
+      <Link href="/">
+        <img
+          src={`${basePath}/title-logo.png`}
+          alt="Logo: HELLO WORLD"
+          width={256}
+          height={114}
+        />
+      </Link>
 
       <div className={styles.linkWrapper}>
         <button
