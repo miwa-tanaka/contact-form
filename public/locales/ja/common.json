@@ -14,8 +14,8 @@
   "ERROR_MSG_EMAIL_FORMAT": "メールアドレスの形式が正しくありません。以下に該当しないか確認してください。（空白が含まれている。＠以降の文字を入力していない）",
   "ERROR_MSG_PHONE": "お電話番号をご入力ください",
   "ERROR_MSG_PHONE_FORMAT": "お電話番号は数字でご入力ください",
-  "ERROR_MSG_PICK": "一つお選びください",
+  "ERROR_MSG_PICK": "ご希望の連絡手段を一つお選びください",
   "ERROR_MSG": "入力された情報に問題があります",
   "CONFIRMATION_MSG": "フォームが正常に送信されました。",
-  "BACK_TO_TOP": "トップへ戻る"
+  "BACK_TO_TOP": "トップページへ戻る"
 }

@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import { useRecoilState } from "recoil";
+import AlertIcon from "@/components/atoms/alertIcon";
 import TextField from "@/components/molecules/inputFields/textField";
 import RadioField from "@/components/molecules/inputFields/radioField";
 import Button from "@/components/atoms/button";
@@ -29,11 +30,11 @@ export default function Form({}: FormProps): JSX.Element {
 
   const [isDisabled, setIsDisabled] = useState<boolean>(false);
   const [isValid, setIsValid] = useRecoilState(contactFormCheckFlagState);
+  const errorMessageRef = useRef<HTMLParagraphElement>(null);
 
   const onSubmit: SubmitHandler<FormInputs> = async (data: FormInputs) => {
-    const hasData = data ? true : false;
-    setIsDisabled(hasData);
-    setIsValid(hasData);
+    setIsDisabled(true);
+    setIsValid(true);
   };
 
   const { t, i18n } = useTranslation("Common");
@@ -44,10 +45,17 @@ export default function Form({}: FormProps): JSX.Element {
     { value: t("TEL"), id: "Tel" },
   ];
 
-  const hasError = Object.keys(errors).length > 0;
+  const handleError = (errors: any) => {
+    if (errorMessageRef.current) {
+      errorMessageRef.current.focus();
+    }
+  };
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+    <form
+      className={styles.form}
+      onSubmit={handleSubmit(onSubmit, handleError)}
+    >
       <fieldset>
         <TextField
           label={t("NAME")}
@@ -143,7 +151,29 @@ export default function Form({}: FormProps): JSX.Element {
           )}
         />
       </fieldset>
-      {hasError && <p className={styles.errorMessage}>{t("ERROR_MSG")}</p>}
+      {Object.keys(errors).length > 0 && (
+        <div
+          role="alert"
+          aria-live="assertive"
+          tabIndex={-1}
+          ref={errorMessageRef}
+          className={styles.errorWrapper}
+        >
+          <p className={styles.errorMessage}>
+            <AlertIcon />
+            {t("ERROR_MSG")}
+          </p>
+          <ul className={styles.errorList}>
+            {Object.entries(errors).map(([field, error]) => (
+              <li key={field}>
+                <a href={`#${field}`} className={styles.errorLink}>
+                  {error?.message}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
       <Button text={t("SUBMIT")} type="submit" disabled={isDisabled} />
     </form>
   );

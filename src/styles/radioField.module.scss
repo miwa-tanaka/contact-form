@@ -2,7 +2,8 @@
 
 .radioWrapper {
   display: flex;
-  gap: 1rem;
+  flex-wrap: wrap;
+  gap: 1.75rem;
   align-items: center;
 
   .radioValue {
